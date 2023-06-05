@@ -14,6 +14,7 @@ export function useRoutes(isAuthenticated) {
   return (
     <>
       <Routes>
+        <Route path="/" exact element={<MainPage />} />
         <Route path="/login" exact element={<AuthPage />} />
         <Route
           path="/detail/:id"
@@ -23,8 +24,6 @@ export function useRoutes(isAuthenticated) {
             </FormProvider>
           }
         />
-        <Route path="/" exact element={<MainPage />} />
-
         <Route
           path="/create"
           exact

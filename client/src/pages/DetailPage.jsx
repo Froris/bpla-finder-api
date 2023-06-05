@@ -32,7 +32,6 @@ function StepContent({
 }
 
 export default function DetailPage() {
-  // NEW
   const [activeStep, setActiveStep] = React.useState(0);
   const [deleteResult, setDeleteResult] = React.useState(0);
 

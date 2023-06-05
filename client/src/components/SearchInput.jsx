@@ -1,16 +1,16 @@
-import { IconButton, InputBase, Paper, Tooltip, Zoom } from '@mui/material';
-import SearchIcon from '@mui/icons-material/Search';
-import CloseIcon from '@mui/icons-material/Close';
-import { useContext, useEffect, useState } from 'react';
-import { QueryContext } from '../context/queryContext';
+import { IconButton, InputBase, Paper, Tooltip, Zoom } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+import CloseIcon from "@mui/icons-material/Close";
+import { useContext, useEffect, useState } from "react";
+import { QueryContext } from "../context/queryContext";
 
 export default function SearchInput() {
-  const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState("");
   const { submit, setItemQuery, filteredQueries } = useContext(QueryContext);
 
   function handleReadyQuery() {
     const [searchValue] = filteredQueries.current.text_str;
-    setSearchValue(searchValue ?? '');
+    setSearchValue(searchValue ?? "");
   }
 
   useEffect(() => {
@@ -18,7 +18,7 @@ export default function SearchInput() {
   }, []);
 
   function handleClickSearch() {
-    setItemQuery('text', searchValue, true, true);
+    setItemQuery("text", searchValue, true, true);
     submit();
   }
 
@@ -27,8 +27,8 @@ export default function SearchInput() {
   }
 
   function handleClickClear() {
-    setSearchValue('');
-    setItemQuery('text', '', true, true);
+    setSearchValue("");
+    setItemQuery("text", "", true, true);
     submit();
   }
 
@@ -44,14 +44,20 @@ export default function SearchInput() {
       component="form"
       elevation={3}
       sx={{
-        m: '4px',
-        p: '2px 4px',
-        display: 'flex',
-        alignItems: 'center',
+        m: "4px",
+        p: "2px 4px",
+        display: "flex",
+        alignItems: "center",
         flexGrow: 1,
-      }}>
+      }}
+    >
       {searchValue.length > 0 && (
-        <IconButton onClick={handleClickClear} type="button" sx={{ p: '10px' }} aria-label="search">
+        <IconButton
+          onClick={handleClickClear}
+          type="button"
+          sx={{ p: "10px" }}
+          aria-label="search"
+        >
           <CloseIcon />
         </IconButton>
       )}
@@ -61,14 +67,15 @@ export default function SearchInput() {
         onChange={handleChangeSearch}
         onKeyDown={handleKeyPress}
         placeholder="Пошук БПЛА..."
-        inputProps={{ 'aria-label': 'search bpla' }}
+        inputProps={{ "aria-label": "search bpla" }}
       />
       <Tooltip TransitionComponent={Zoom} title="Search">
         <IconButton
           onClick={handleClickSearch}
           type="button"
-          sx={{ p: '10px' }}
-          aria-label="search">
+          sx={{ p: "10px" }}
+          aria-label="search"
+        >
           <SearchIcon />
         </IconButton>
       </Tooltip>
